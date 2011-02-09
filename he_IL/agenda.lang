@@ -1,0 +1,55 @@
+# Dolibarr language file - en_US - agenda 
+CHARSET=UTF-8
+Actions= Actions
+ActionsArea= Actions area (Events and tasks)
+Agenda= Agenda
+Agendas= Agendas
+Calendar= Calendar
+Calendars= Calendars
+AffectedTo= Affected to
+DoneBy= Done by
+Events= Events
+ListOfActions=List of events
+Location=Location
+EventOnFullDay=Event on full day
+SearchAnAction= Search an action/task
+MenuToDoActions= All incomplete actions
+MenuDoneActions= All terminated actions
+MenuToDoMyActions= My incomplete actions
+MenuDoneMyActions= My terminated actions
+ListOfEvents= List of Dolibarr events
+ActionsAskedBy= Actions recorded by
+ActionsToDoBy= Actions affected to
+ActionsDoneBy= Actions done by
+AllMyActions= All my actions/tasks
+AllActions= All actions/tasks
+ViewList= View list
+ViewCal= View calendar
+ViewWithPredefinedFilters= View with predefined filters
+AutoActions= Automatic filling of agenda
+AgendaAutoActionDesc= Define here events for which you want Dolibarr to create automatically an action in agenda. If nothing is checked (by default), only manual actions will be included in agenda.
+AgendaSetupOtherDesc= This page allows to configure other parameters of agenda module.
+ActionsEvents= Events for which Dolibarr will create an action in agenda automatically
+PropalValidatedInDolibarr= Proposal %s validated
+InvoiceValidatedInDolibarr= Invoice %s validated
+OrderValidatedInDolibarr= Order %s validated
+InterventionValidatedInDolibarr=Intervention %s validated
+ProposalSentByEMail=Commercial proposal %s sent by EMail
+OrderSentByEMail=Customer order %s sent by EMail
+InvoiceSentByEMail=Customer invoice %s sent by EMail
+SupplierOrderSentByEMail=Supplier order %s sent by EMail
+SupplierInvoiceSentByEMail=Supplier invoice %s sent by EMail
+NewCompanyToDolibarr= Third party created
+DateActionPlannedStart= Planned start date
+DateActionPlannedEnd= Planned end date
+DateActionDoneStart= Real start date
+DateActionDoneEnd= Real end date
+DateActionStart= Start date
+DateActionEnd= End date
+AgendaUrlOptions1=You can also add following parameters to filter output:
+AgendaUrlOptions2=<b>login=%s</b> to restrict output to actions created by, affected to or done by user <b>%s</b>.
+AgendaUrlOptions3=<b>logina=%s</b> to restrict output to actions created by user <b>%s</b>.
+AgendaUrlOptions4=<b>logint=%s</b> to restrict output to actions affected to user <b>%s</b>.
+AgendaUrlOptions5=<b>logind=%s</b> to restrict output to actions done by user <b>%s</b>.
+AgendaShowBirthdayEvents=Show birthday's contacts
+AgendaHideBirthdayEvents=Hide birthday's contacts
