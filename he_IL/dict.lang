@@ -248,10 +248,10 @@ CountryBL=Saint Barthelemy
 CountryMF=Saint Martin
 
 ##### Civilities #####
-CivilityMME=Mrs.
-CivilityMR=Mr.
-CivilityMLE=Ms.
-CivilityMTRE=Master
+CivilityMME=גברת
+CivilityMR=מר
+CivilityMLE=גברת
+CivilityMTRE=מר
 
 ##### Currencies #####
 Currencyeuros=Euros
@@ -287,3 +287,4 @@ CurrencyXOF=CFA Francs BCEAO
 CurrencySingXOF=CFA Franc BCEAO
 CurrencyXPF=CFP Francs
 CurrencySingXPF=CFP Franc
+
