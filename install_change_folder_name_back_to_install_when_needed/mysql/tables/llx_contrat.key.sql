@@ -1,0 +1,35 @@
+-- ============================================================================
+-- Copyright (C) 2002-2004 Rodolphe Quiedeville <rodolphe@quiedeville.org>
+-- Copyright (C) 2004-2005 Laurent Destailleur  <eldy@users.sourceforge.net>
+-- Copyright (C) 2005-2009 Regis Houssin        <regis@dolibarr.fr>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+--
+-- $Id: llx_contrat.key.sql,v 1.1 2009/10/07 18:18:07 eldy Exp $
+-- ============================================================================
+
+
+-- Supprimme orhpelins pour permettre montée de la clé
+-- V4 DELETE llx_contratdet FROM llx_contratdet, llx_contrat LEFT JOIN llx_societe ON llx_contrat.fk_soc = llx_societe.rowid WHERE llx_contratdet.fk_contrat = llx_contrat.rowid AND llx_societe.rowid IS NULL; 
+-- V4 DELETE llx_contrat FROM llx_contrat LEFT JOIN llx_societe ON llx_contrat.fk_soc = llx_societe.rowid WHERE llx_societe.rowid IS NULL;
+-- V4 DELETE llx_contrat FROM llx_contrat LEFT JOIN llx_user ON llx_contrat.fk_user_author = llx_user.rowid WHERE llx_user.rowid IS NULL;
+
+ALTER TABLE llx_contrat ADD UNIQUE INDEX uk_contrat_ref (ref, entity);
+
+ALTER TABLE llx_contrat ADD INDEX idx_contrat_fk_soc (fk_soc);
+ALTER TABLE llx_contrat ADD INDEX idx_contrat_fk_user_author (fk_user_author);
+
+ALTER TABLE llx_contrat ADD CONSTRAINT fk_contrat_fk_soc FOREIGN KEY (fk_soc) REFERENCES llx_societe (rowid);
+ALTER TABLE llx_contrat ADD CONSTRAINT fk_contrat_user_author FOREIGN KEY (fk_user_author) REFERENCES llx_user (rowid);

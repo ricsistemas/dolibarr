@@ -1,0 +1,4 @@
+# Dolibarr language file - nl_BE - domains
+CHARSET=UTF-8
+DomainNames=Domeinnamen
+NewDomain=Nieuwe domeinnaam

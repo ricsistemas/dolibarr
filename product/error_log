@@ -1,0 +1,12 @@
+[10-Feb-2011 14:02:36] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting T_STRING or T_VARIABLE or '{' or '$' in /home/eyalevin/public_html/dolibarr3/core/class/html.formfile.class.php on line 69
+[14-Feb-2011 11:50:23] PHP Parse error:  syntax error, unexpected '}' in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1139
+[14-Feb-2011 12:00:37] PHP Parse error:  syntax error, unexpected T_PRINT in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1203
+[14-Feb-2011 12:22:52] PHP Parse error:  syntax error, unexpected '.' in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1150
+[14-Feb-2011 12:44:31] PHP Parse error:  syntax error, unexpected T_ELSE in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1212
+[14-Feb-2011 12:46:06] PHP Parse error:  syntax error, unexpected T_ELSE in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1039
+[14-Feb-2011 12:47:54] PHP Parse error:  syntax error, unexpected T_ELSE in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1039
+[14-Feb-2011 12:47:56] PHP Parse error:  syntax error, unexpected T_ELSE in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1039
+[14-Feb-2011 12:49:03] PHP Parse error:  syntax error, unexpected T_ELSE in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1039
+[14-Feb-2011 12:49:05] PHP Parse error:  syntax error, unexpected T_ELSE in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1039
+[14-Feb-2011 12:49:09] PHP Parse error:  syntax error, unexpected T_ELSE in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1039
+[14-Feb-2011 12:50:05] PHP Parse error:  syntax error, unexpected T_ELSE in /home/eyalevin/public_html/dolibarr3/product/fiche.php on line 1211

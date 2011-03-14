@@ -1,0 +1,39 @@
+[09-Feb-2011 11:09:54] PHP Parse error:  syntax error, unexpected T_STRING in /home/eyalevin/public_html/dolibarr3/includes/modules/commande/pdf_einstein.modules.php on line 161
+[09-Feb-2011 11:10:32] PHP Parse error:  syntax error, unexpected T_STRING in /home/eyalevin/public_html/dolibarr3/includes/modules/commande/pdf_einstein.modules.php on line 161
+[13-Mar-2011 12:11:52] PHP Warning:  require_once(C:/dolibarr/www/dolibarr/htdocs/mpdf/mpdf.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/eyalevin/public_html/dolibarr3/pbx.php on line 4
+[13-Mar-2011 12:11:52] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'C:/dolibarr/www/dolibarr/htdocs/mpdf/mpdf.php' (include_path='/home/eyalevin/public_html/htdocs') in /home/eyalevin/public_html/dolibarr3/pbx.php on line 4
+[13-Mar-2011 12:19:47] PHP Fatal error:  Cannot redeclare stripslashes_deep() (previously declared in /home/eyalevin/public_html/dolibarr3/main.inc.php:50) in /home/eyalevin/public_html/dolibarr3/main.inc.php on line 53
+[13-Mar-2011 12:20:22] PHP Fatal error:  Cannot redeclare stripslashes_deep() (previously declared in /home/eyalevin/public_html/dolibarr3/main.inc.php:50) in /home/eyalevin/public_html/dolibarr3/main.inc.php on line 53
+[13-Mar-2011 12:21:59] PHP Fatal error:  Cannot redeclare stripslashes_deep() (previously declared in /home/eyalevin/public_html/dolibarr3/main.inc.php:50) in /home/eyalevin/public_html/dolibarr3/main.inc.php on line 53
+[13-Mar-2011 12:22:05] PHP Fatal error:  Cannot redeclare stripslashes_deep() (previously declared in /home/eyalevin/public_html/dolibarr3/main.inc.php:50) in /home/eyalevin/public_html/dolibarr3/main.inc.php on line 53
+[13-Mar-2011 12:22:07] PHP Fatal error:  Cannot redeclare stripslashes_deep() (previously declared in /home/eyalevin/public_html/dolibarr3/main.inc.php:50) in /home/eyalevin/public_html/dolibarr3/main.inc.php on line 53
+[13-Mar-2011 12:22:12] PHP Fatal error:  Cannot redeclare stripslashes_deep() (previously declared in /home/eyalevin/public_html/dolibarr3/main.inc.php:50) in /home/eyalevin/public_html/dolibarr3/main.inc.php on line 53
+[13-Mar-2011 12:22:19] PHP Fatal error:  Cannot redeclare stripslashes_deep() (previously declared in /home/eyalevin/public_html/dolibarr3/main.inc.php:50) in /home/eyalevin/public_html/dolibarr3/main.inc.php on line 53
+[13-Mar-2011 12:22:22] PHP Fatal error:  Cannot redeclare stripslashes_deep() (previously declared in /home/eyalevin/public_html/dolibarr3/main.inc.php:50) in /home/eyalevin/public_html/dolibarr3/main.inc.php on line 53
+[13-Mar-2011 12:25:13] PHP Fatal error:  Cannot redeclare stripslashes_deep() (previously declared in /home/eyalevin/public_html/dolibarr3/main.inc.php:50) in /home/eyalevin/public_html/dolibarr3/main.inc.php on line 53
+[13-Mar-2011 12:26:50] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'eyalevin'@'localhost' (using password: NO) in /home/eyalevin/public_html/dolibarr3/pbx.php on line 10
+[13-Mar-2011 12:26:50] PHP Warning:  mysql_set_charset() expects parameter 2 to be resource, boolean given in /home/eyalevin/public_html/dolibarr3/pbx.php on line 11
+[13-Mar-2011 12:27:35] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'eyalevin'@'localhost' (using password: NO) in /home/eyalevin/public_html/dolibarr3/pbx.php on line 11
+[13-Mar-2011 12:27:35] PHP Warning:  mysql_set_charset() expects parameter 2 to be resource, boolean given in /home/eyalevin/public_html/dolibarr3/pbx.php on line 12
+[13-Mar-2011 12:28:57] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'eyalevin'@'localhost' (using password: NO) in /home/eyalevin/public_html/dolibarr3/pbx.php on line 11
+[13-Mar-2011 12:28:57] PHP Warning:  mysql_set_charset() expects parameter 2 to be resource, boolean given in /home/eyalevin/public_html/dolibarr3/pbx.php on line 12
+[13-Mar-2011 12:33:43] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/eyalevin/public_html/dolibarr3/pbx.php on line 13
+[13-Mar-2011 12:34:01] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/eyalevin/public_html/dolibarr3/pbx.php on line 13
+[13-Mar-2011 12:34:06] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/eyalevin/public_html/dolibarr3/pbx.php on line 13
+[13-Mar-2011 12:34:09] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/eyalevin/public_html/dolibarr3/pbx.php on line 13
+[13-Mar-2011 12:35:03] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'eyalevin'@'localhost' (using password: NO) in /home/eyalevin/public_html/dolibarr3/pbx.php on line 12
+[13-Mar-2011 12:37:24] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/eyalevin/public_html/dolibarr3/pbx.php:80) in /home/eyalevin/public_html/dolibarr3/mpdf/mpdf.php on line 7045
+[13-Mar-2011 12:37:24] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/eyalevin/public_html/dolibarr3/pbx.php:80) in /home/eyalevin/public_html/dolibarr3/mpdf/mpdf.php on line 1771
+[13-Mar-2011 12:40:09] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/eyalevin/public_html/dolibarr3/pbx.php:80) in /home/eyalevin/public_html/dolibarr3/commande/fiche.php on line 773
+[13-Mar-2011 13:12:44] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:14:46] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:14:54] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:15:06] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:15:22] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:15:25] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:15:31] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:18:10] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:18:51] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:18:58] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 63
+[13-Mar-2011 13:19:34] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 75
+[13-Mar-2011 13:22:06] PHP Fatal error:  Function name must be a string in /home/eyalevin/public_html/dolibarr3/pbx.php on line 75

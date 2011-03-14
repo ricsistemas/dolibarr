@@ -1,0 +1,55 @@
+# Dolibarr language file - nl_NL - agenda 
+CHARSET=UTF-8
+Actions=Acties
+ActionsArea=Actiegedeelte (Evenementen en taken)
+Agenda=Agenda
+Agendas=Agenda's
+Calendar=Kalender
+Calendars=Kalenders
+AffectedTo=Beïnvloed in
+DoneBy=Gedaan door
+Events=Evenementen
+ListOfActions=Lijst met evenementen
+Location=Locatie
+SearchAnAction=Zoek een actie/taak
+MenuToDoActions=Alle openstaande acties
+MenuDoneActions=Alle beëindigde acties
+MenuToDoMyActions=Mijn onvolledige acties
+MenuDoneMyActions=Mijn beëindigde acties
+ListOfEvents=Lijst van Dolibarr evenementen
+ActionsAskedBy=Acties door
+ActionsToDoBy=Maatregelen getroffen door
+ActionsDoneBy=Acties gedaan door
+AllMyActions=Al mijn acties/taken
+AllActions=Alle acties/taken
+ViewList=Bekijk de lijst
+ViewCal=Bekijk kalender
+ViewWithPredefinedFilters=Bekijk met voorgedefinieerde filters
+AutoActions=Automatisch invullen van de agenda
+AgendaAutoActionDesc=Definieer hier evenementen waarvoor u Dolibarr eem automatische afsrpaak in de agenda wilt maken. Als er niets is aangevinkt (standaard), zullen alleen handmatige acties worden opgenomen in de agenda.
+AgendaSetupOtherDesc=Deze pagina staat het configureren van andere parameters van de agenda module toe.
+ActionsEvents=Evenementen waarvoor Dolibarr een item automatisch zal maken in de agenda
+PropalValidatedInDolibarr=Voorstel gevalideerd
+InvoiceValidatedInDolibarr=Factuur gevalideerd
+OrderValidatedInDolibarr=Bestelliing gevalideerd
+InterventionValidatedInDolibarr=Interventie %s gevalideerd
+NewCompanyToDolibarr=Derden aangemaakt
+DateActionPlannedStart=Geplande startdatum
+DateActionPlannedEnd=Geplande einddatum
+DateActionDoneStart=Werkelijke start datum
+DateActionDoneEnd=Werkelijke einddatum
+DateActionStart=Begindatum
+DateActionEnd=Einddatum
+AgendaUrlOptions1=U kunt ook de volgende parameters gebruiken om te filteren:
+AgendaUrlOptions2=<b>login=%s</b> om uitvoer te beperken van acties die gemaakt, aangepast of gedaan worden door gebruiker <b>%s</b>.
+AgendaUrlOptions3=<b>logina=%s</b> om uitvoer te beperken van acties die door de gebruiker <b>%s</b> worden gemaakt.
+AgendaUrlOptions4=<b>logint=%s</b> om uitvoer te beperken van acties die door de gebruiker <%s</b> worden aangepast.
+AgendaUrlOptions5=<b>logind=%s</b> om uitvoer te beperken van acties die door de gebruiker <b>%s</b> worden gedaan.
+AgendaShowBirthdayEvents=Toon verjaardag van contacten
+AgendaHideBirthdayEvents=Verberg verjaardag van contacten
+
+// START - Lines generated via autotranslator.php tool (2010-07-17 11:42:52).
+// Reference language: en_US
+InterventionValidatedInDolibarr=Intervensjon %s validert
+InterventionValidatedInDolibarr=Interventie sssss gevalideerd
+// STOP - Lines generated via autotranslator.php tool (2010-07-17 11:42:53).

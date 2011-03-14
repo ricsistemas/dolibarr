@@ -1,0 +1,9 @@
+@echo off
+REM Launch Dolibarr
+REM ---------------
+
+REM If no lock file, we call install process
+IF NOT EXIST www\dolibarr\install.lock start "Dolibarr" "WAMPBROWSER" http://localhost:WAMPAPACHEPORT/dolibarr/install/
+
+REM If lock file exists, we call home page
+IF EXIST www\dolibarr\install.lock start "Dolibarr" "WAMPBROWSER" http://localhost:WAMPAPACHEPORT/dolibarr/

@@ -1,0 +1,26 @@
+# Dolibarr language file - nl_NL - deliveries
+CHARSET=UTF-8
+Delivery=Levering
+Deliveries=Leveringen
+DeliveryCard=Bezorgingskaart
+DeliveryOrder=Leveringsbon
+DeliveryOrders=Levering orders
+DeliveryDate=Leveringstermijn
+DeliveryDateShort=Geleverde datum
+CreateDeliveryOrder=Genereer leveringsbon
+QtyDelivered=Qty uitgebracht
+SetDeliveryDate=Zet verzendkosten datum
+ValidateDeliveryReceipt=Valideer ontvangstbewijs
+ValidateDeliveryReceiptConfirm=Weet u zeker dat u dit ontvangstbewijs wilt valideren?
+DeliveryMethod=Leveringsmethode
+DeleteDeliveryReceiptConfirm=Weet u zeker dat u deze levering wilt verwijderen?
+DeliveryMethod=Methode en Levering
+TrackingNumber=Volgnummer
+
+# PDF model
+NameAndSignature=Naam en handtekening:
+ToAndDate=To___________________________________ op ____ / _____ / __________
+GoodStatusDeclaration=Hebben de bovenstaande goederen in goede conditie ontvangen,
+Deliverer=Bezorger :
+Sender=Afzender
+Recipient=Ontvanger
