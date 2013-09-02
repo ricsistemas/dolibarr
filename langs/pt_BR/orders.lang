@@ -120,5 +120,17 @@ OrderSource6=Revistas
 QtyOrdered=Quant. Pedida
 AddDeliveryCostLine=Adicionar uma linha de despesas de fretes indicando o peso do pedido
 
-# Document models
-PDFEinsteinDescription=Modelo de orçamento completo (logo...)
+# Documents models
+PDFEinsteinDescription=A complete order model (logo...)
+PDFEdisonDescription=A simple order model
+# Orders modes
+OrderByMail=Mail
+OrderByFax=Fax
+OrderByEMail=EMail
+OrderByWWW=Online
+OrderByPhone=Fone
+
+CreateInvoiceForThisCustomer=Faturar Outros
+NoOrdersToInvoice=No orders billable
+CloseProcessedOrdersAutomatically=Classify "Processar" todas selecionadas. 
+MenuOrdersToBill2=Billables orders
