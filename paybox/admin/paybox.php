@@ -40,11 +40,12 @@ if (!$user->admin)
 if ($_POST["action"] == 'setvalue' && $user->admin)
 {
 	//$result=dolibarr_set_const($db, "PAYBOX_IBS_DEVISE",$_POST["PAYBOX_IBS_DEVISE"],'chaine',0,'',$conf->entity);
-	$result=dolibarr_set_const($db, "PAYBOX_CGI_URL_V1",$_POST["PAYBOX_CGI_URL_V1"],'chaine',0,'',$conf->entity);
+//	$result=dolibarr_set_const($db, "PAYBOX_CGI_URL_V1",$_POST["PAYBOX_CGI_URL_V1"],'chaine',0,'',$conf->entity);
 	$result=dolibarr_set_const($db, "PAYBOX_CGI_URL_V2",$_POST["PAYBOX_CGI_URL_V2"],'chaine',0,'',$conf->entity);
 	$result=dolibarr_set_const($db, "PAYBOX_IBS_SITE",$_POST["PAYBOX_IBS_SITE"],'chaine',0,'',$conf->entity);
 	$result=dolibarr_set_const($db, "PAYBOX_IBS_RANG",$_POST["PAYBOX_IBS_RANG"],'chaine',0,'',$conf->entity);
 	$result=dolibarr_set_const($db, "PAYBOX_PBX_IDENTIFIANT",$_POST["PAYBOX_PBX_IDENTIFIANT"],'chaine',0,'',$conf->entity);
+	$result=dolibarr_set_const($db, "PAYBOX_PBX_HMAC",$_POST["PAYBOX_PBX_HMAC"],'chaine',0,'',$conf->entity);
 
     $result=dolibarr_set_const($db, "PAYBOX_CREDITOR",$_POST["PAYBOX_CREDITOR"],'chaine',0,'',$conf->entity);
 	$result=dolibarr_set_const($db, "PAYBOX_CSS_URL",$_POST["PAYBOX_CSS_URL"],'chaine',0,'',$conf->entity);
@@ -73,6 +74,10 @@ $IBS_RANG="99";         # Rang test
 if (empty($conf->global->PAYBOX_IBS_RANG)) $conf->global->PAYBOX_IBS_RANG=$IBS_RANG;
 $IBS_DEVISE="978";      # Euro
 if (empty($conf->global->PAYBOX_IBS_DEVISE)) $conf->global->PAYBOX_IBS_DEVISE=$IBS_DEVISE;
+$IBS_HMAC="0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF";    # Site test
+if (empty($conf->global->PAYBOX_IBS_HMAC)) $conf->global->PAYBOX_IBS_HMAC=$IBS_HMAC;
+$IBS_HASH="256";    # Site test
+if (empty($conf->global->PAYBOX_IBS_HASH)) $conf->global->PAYBOX_IBS_HASH=$IBS_HMAC;
 
 llxHeader();
 
@@ -118,6 +123,20 @@ print '<input size="32" type="text" name="PAYBOX_PBX_IDENTIFIANT" value="'.$conf
 print '<br>'.$langs->trans("Example").': 2 ('.$langs->trans("Test").')';
 print '</td></tr>';
 
+$var=!$var;
+print '<tr '.$bc[$var].'><td>';
+print '<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_HMAC").'</span></td><td>';
+print '<input size="32" type="text" name="PAYBOX_PBX_HMAC" value="'.$conf->global->PAYBOX_PBX_HMAC.'">';
+print '<br>'.$langs->trans("Example").': 0123456789....ABCDEF ('.$langs->trans("Test").')';
+print '</td></tr>';
+
+$var=!$var;
+print '<tr '.$bc[$var].'><td>';
+print '<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_HASH").'</span></td><td>';
+print '<input size="32" type="text" name="PAYBOX_PBX_HASH" value="'.$conf->global->PAYBOX_PBX_HASH.'">';
+print '<br>'.$langs->trans("Example").': 256 ('.$langs->trans("Test").')';
+print '</td></tr>';
+
 $var=true;
 print '<tr class="liste_titre">';
 print '<td>'.$langs->trans("UsageParameter").'</td>';
@@ -147,6 +166,15 @@ print '<tr '.$bc[$var].'><td>';
 print '<span class="fieldrequired">'.$langs->trans("PAYBOX_CGI_URL_V2").'</span></td><td>';
 print '<input size="64" type="text" name="PAYBOX_CGI_URL_V2" value="'.$conf->global->PAYBOX_CGI_URL_V2.'">';
 print '<br>'.$langs->trans("Example").': http://mysite/cgi-bin/modulev2_redhat72.cgi';
+print '<br><!>'.$langs->trans("LeaveEmptyWhenYouUseHMAC")."<!>";
+print '</td></tr>';
+
+$var=!$var;
+print '<tr '.$bc[$var].'><td>';
+print '<span class="fieldrequired">'.$langs->trans("PAYBOX_CGI_URL_HMAC").'</span></td><td>';
+print '<input size="64" type="text" name="PAYBOX_CGI_URL_HMAC" value="'.$conf->global->PAYBOX_CGI_URL_V2.'">';
+print '<br>'.$langs->trans("ForProduction").' : https//tpeweb.paybox.com/php/';
+print '<br>'.$langs->trans("ForTest").' : https//preprod-toeweb.paybox.com/php/';
 print '</td></tr>';
 
 $var=!$var;

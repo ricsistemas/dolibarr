@@ -32,3 +32,6 @@ VendorName=Nom du vendeur
 CSSUrlForPaymentForm=Url feuille style css pour le formulaire de paiement
 MessageOK=Message sur page de retour de paiement validé
 MessageKO=Message sur page de retour de paiement annulé
+LeaveEmptyWhenYouUseHMAC=Laissez vide pour utiliser HMAC
+ForProduction=Pour la production
+ForTest=Pour le mode test
