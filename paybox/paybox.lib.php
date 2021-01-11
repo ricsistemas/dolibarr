@@ -64,15 +64,16 @@ function llxFooterPayBox()
  *		\brief  	calculates HMAC based on array of parameters
  *		\return 	int				1 if OK, -1 if ERROR
  */
-function calc_hmac($ARRAY)
+function calc_hmac($ARRAY, $IBS_HASH)
 {
+	$IBS_HMAC="0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF";	# HMAC Secret Key (by default)	
 	if ($conf->global->PAYBOX_IBS_HMAC) $IBS_HMAC=$conf->global->PAYBOX_IBS_HMAC;
-	$IBS_HMAC="0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF";	# HMAC Sceret Key (by default)	
 	if (empty($IBS_HMAC))
 	{
 		dol_print_error('',"Paybox setup param PAYBOX_IBS_HMAC not defined");
 		return -1;
 	}
+
 	$params = array();
 	foreach ($ARRAY as $name => $value) {
 		$params[] = $name.'='.$value;
@@ -83,7 +84,7 @@ function calc_hmac($ARRAY)
 	$key = pack('H*', $IBS_HMAC);
 
 	// Sign values
-	$sign = hash_hmac($PBX_HASH, $query, $key);
+	$sign = hash_hmac($IBS_HASH, $query, $key);
 	if ($sign === false) {
 		$errorMsg = 'Paybox unable to create hmac signature. Maybe a wrong configuration.';
 		dol_print_error('',$errorMsg);
@@ -111,7 +112,9 @@ function print_paybox_redirect($PRICE,$CURRENCY,$EMAIL,$urlok,$urlko,$TAG)
 	$IBS_RANG="99";         # Rang test
 	if ($conf->global->PAYBOX_IBS_RANG) $IBS_RANG=$conf->global->PAYBOX_IBS_RANG;
 	$IBS_DEVISE="840";	# Currency (Dollar US by default)
-	if ($CURRENCY == 'EUR') $IBS_DEVISE="978";
+	$IBS_HASH="256";	# HMAC hash type (256 by default)	
+	if ($conf->global->PAYBOX_IBS_HASH) $IBS_HASH=$conf->global->PAYBOX_IBS_HASH;
+
 	if ($CURRENCY == 'USD') $IBS_DEVISE="840";
 
 	$URLPAYBOX="";
@@ -124,7 +127,7 @@ function print_paybox_redirect($PRICE,$CURRENCY,$EMAIL,$urlok,$urlko,$TAG)
 		dol_print_error('',"Paybox setup param PAYBOX_IBS_DEVISE not defined");
 		return -1;
 	}
-	if (empty($URLPAYBOX))
+	if ($CURRENCY == 'EUR') $IBS_DEVISE="978";	if (empty($URLPAYBOX))
 	{
 		dol_print_error('',"Paybox setup param PAYBOX_CGI_URL_V1 and PAYBOX_CGI_URL_V2 undefined");
 		return -1;
@@ -139,7 +142,11 @@ function print_paybox_redirect($PRICE,$CURRENCY,$EMAIL,$urlok,$urlko,$TAG)
 		dol_print_error('',"Paybox setup param PAYBOX_IBS_RANG not defined");
 		return -1;
 	}
-
+	if (empty($IBS_HASH))
+	{
+		dol_print_error('',"Paybox setup param PAYBOX_IBS_HASH not defined");
+		return -1;
+	}
 	// Definition des parametres vente produit pour paybox
     $IBS_CMD=$TAG;
     $IBS_TOTAL=$PRICE*100;     	# En centimes
@@ -184,7 +191,7 @@ function print_paybox_redirect($PRICE,$CURRENCY,$EMAIL,$urlok,$urlko,$TAG)
 	array_push($PBX_ARRAY, "PBX_IDENTIFIANT"=>$PBX_IDENTIFIANT);	
 	array_push($PBX_ARRAY, "PBX_SOURCE"=>$PBX_SOURCE);	 	
 	array_push($PBX_ARRAY, "PBX_TYPEPAIEMENT"=>$PBX_TYPEPAIEMENT);
-	array_push($PBX_ARRAY, "PBX_HASH"=>$PBX_HASH);
+	array_push($PBX_ARRAY, "PBX_HASH"=>$IBX_HASH);
 	ksort($PBX_ARRAY);
     	dol_syslog("Soumission Paybox", LOG_DEBUG);
 	foreach($PBX_ARRAY as $var => $val){
@@ -231,7 +238,7 @@ function print_paybox_redirect($PRICE,$CURRENCY,$EMAIL,$urlok,$urlko,$TAG)
 		print '<input type="hidden" name="'.$var.'" value="'.$val.'">'."\n";
 	} 
 	//insert HMAC signature
-	if ($conf->global->PAYBOX_IBS_HMAC)print '<input type="hidden" name="PBX_HMAC" value="'.calc_hmac($PBX_ARRAY).'">'."\n";
+	if ($conf->global->PAYBOX_IBS_HMAC)print '<input type="hidden" name="PBX_HMAC" value="'.calc_hmac($PBX_ARRAY, $IBS_HASH).'">'."\n";
     print '</form>'."\n";
 
     // Formulaire pour module Paybox v2 (PBX_xxx)
