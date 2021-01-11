@@ -185,7 +185,7 @@ function print_paybox_redirect($PRICE,$CURRENCY,$EMAIL,$urlok,$urlko,$TAG)
 	array_push($PBX_ARRAY, "PBX_SOURCE"=>$PBX_SOURCE);	 	
 	array_push($PBX_ARRAY, "PBX_TYPEPAIEMENT"=>$PBX_TYPEPAIEMENT);
 	array_push($PBX_ARRAY, "PBX_HASH"=>$PBX_HASH);
-	
+	ksort($PBX_ARRAY);
     	dol_syslog("Soumission Paybox", LOG_DEBUG);
 	foreach($PBX_ARRAY as $var => $val){
 		dol_syslog($var.": ".$val, LOG_DEBUG);
