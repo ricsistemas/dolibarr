@@ -60,6 +60,38 @@ function llxFooterPayBox()
 	print "</html>\n";
 }
 
+/**
+ *		\brief  	calculates HMAC based on array of parameters
+ *		\return 	int				1 if OK, -1 if ERROR
+ */
+function calc_hmac($ARRAY)
+{
+	if ($conf->global->PAYBOX_IBS_HMAC) $IBS_HMAC=$conf->global->PAYBOX_IBS_HMAC;
+	$IBS_HMAC="0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF";	# HMAC Sceret Key (by default)	
+	if (empty($IBS_HMAC))
+	{
+		dol_print_error('',"Paybox setup param PAYBOX_IBS_HMAC not defined");
+		return -1;
+	}
+	$params = array();
+	foreach ($ARRAY as $name => $value) {
+		$params[] = $name.'='.$value;
+	}
+	$query = implode('&', $params);
+
+	// Prepare key
+	$key = pack('H*', $IBS_HMAC);
+
+	// Sign values
+	$sign = hash_hmac($PBX_HASH, $query, $key);
+	if ($sign === false) {
+		$errorMsg = 'Paybox unable to create hmac signature. Maybe a wrong configuration.';
+		dol_print_error('',$errorMsg);
+	}
+
+	return strtoupper($sign);
+
+}
 
 /**
  *		\brief  	Create a redirect form to paybox form
@@ -78,13 +110,14 @@ function print_paybox_redirect($PRICE,$CURRENCY,$EMAIL,$urlok,$urlko,$TAG)
 	if ($conf->global->PAYBOX_IBS_SITE) $IBS_SITE=$conf->global->PAYBOX_IBS_SITE;
 	$IBS_RANG="99";         # Rang test
 	if ($conf->global->PAYBOX_IBS_RANG) $IBS_RANG=$conf->global->PAYBOX_IBS_RANG;
-	$IBS_DEVISE="840";			# Currency (Dollar US by default)
+	$IBS_DEVISE="840";	# Currency (Dollar US by default)
 	if ($CURRENCY == 'EUR') $IBS_DEVISE="978";
 	if ($CURRENCY == 'USD') $IBS_DEVISE="840";
 
 	$URLPAYBOX="";
-	if ($conf->global->PAYBOX_CGI_URL_V1) $URLPAYBOX=$conf->global->PAYBOX_CGI_URL_V1;
 	if ($conf->global->PAYBOX_CGI_URL_V2) $URLPAYBOX=$conf->global->PAYBOX_CGI_URL_V2;
+	if ($conf->global->PAYBOX_CGI_URL_HMAC) $URLPAYBOX=$conf->global->PAYBOX_CGI_URL_HMAC;
+
 
 	if (empty($IBS_DEVISE))
 	{
@@ -132,26 +165,32 @@ function print_paybox_redirect($PRICE,$CURRENCY,$EMAIL,$urlok,$urlko,$TAG)
 	$IBS_OUTPUT='E';
 	$PBX_SOURCE='HTML';
 	$PBX_TYPEPAIEMENT='CARTE';
+	/*building an array to simplify everything*/
+	$PBX_ARRAY = array();
+	if ($conf->global->PAYBOX_CGI_URL_V2)array_push($PBX_ARRAY, "IBS_MODE"=>$IBS_MODE);	 		
+	array_push($PBX_ARRAY, "PBX_SITE"=>$IBS_SITE); 		
+	array_push($PBX_ARRAY, "PBX_RANG"=>$IBS_RANG);	 		
+	array_push($PBX_ARRAY, "PBX_TOTAL"=>$IBS_TOTAL);		
+	array_push($PBX_ARRAY, "PBX_DEVISE"=>$IBS_DEVISE);		
+	array_push($PBX_ARRAY, "PBX_CMD	"=>$IBS_CMD);	 		
+	array_push($PBX_ARRAY, "PBX_PORTEUR"=>$IBS_PORTEUR);		
+	array_push($PBX_ARRAY, "PBX_RETOUR"=>$IBS_RETOUR);		
+	array_push($PBX_ARRAY, "PBX_EFFECTUE"=>$IBS_EFFECTUE);	
+	array_push($PBX_ARRAY, "PBX_ANNULE"=>$IBS_ANNULE);		
+	array_push($PBX_ARRAY, "PBX_REFUSE"=>$IBS_REFUSE);	
+	array_push($PBX_ARRAY, "PBX_WAIT"=>$IBS_WAIT);		
+	array_push($PBX_ARRAY, "PBX_LANG"=>$IBS_LANG);		
+	array_push($PBX_ARRAY, "PBX_OUTPUT"=>$IBS_OUTPUT);		
+	array_push($PBX_ARRAY, "PBX_IDENTIFIANT"=>$PBX_IDENTIFIANT);	
+	array_push($PBX_ARRAY, "PBX_SOURCE"=>$PBX_SOURCE);	 	
+	array_push($PBX_ARRAY, "PBX_TYPEPAIEMENT"=>$PBX_TYPEPAIEMENT);
+	array_push($PBX_ARRAY, "PBX_HASH"=>$PBX_HASH);
+	
+    	dol_syslog("Soumission Paybox", LOG_DEBUG);
+	foreach($PBX_ARRAY as $var => $val){
+		dol_syslog($var.": ".$val, LOG_DEBUG);
+	} 
 
-    dol_syslog("Soumission Paybox", LOG_DEBUG);
-    dol_syslog("IBS_MODE: $IBS_MODE", LOG_DEBUG);
-    dol_syslog("IBS_SITE: $IBS_SITE", LOG_DEBUG);
-    dol_syslog("IBS_RANG: $IBS_RANG", LOG_DEBUG);
-    dol_syslog("IBS_TOTAL: $IBS_TOTAL", LOG_DEBUG);
-    dol_syslog("IBS_DEVISE: $IBS_DEVISE", LOG_DEBUG);
-    dol_syslog("IBS_CMD: $IBS_CMD", LOG_DEBUG);
-    dol_syslog("IBS_PORTEUR: $IBS_PORTEUR", LOG_DEBUG);
-    dol_syslog("IBS_RETOUR: $IBS_RETOUR", LOG_DEBUG);
-    dol_syslog("IBS_EFFECTUE: $IBS_EFFECTUE", LOG_DEBUG);
-    dol_syslog("IBS_ANNULE: $IBS_ANNULE", LOG_DEBUG);
-    dol_syslog("IBS_REFUSE: $IBS_REFUSE", LOG_DEBUG);
-    dol_syslog("IBS_BKGD: $IBS_BKGD", LOG_DEBUG);
-    dol_syslog("IBS_WAIT: $IBS_WAIT", LOG_DEBUG);
-    dol_syslog("IBS_LANG: $IBS_LANG", LOG_DEBUG);
-    dol_syslog("IBS_OUTPUT: $IBS_OUTPUT", LOG_DEBUG);
-    dol_syslog("PBX_IDENTIFIANT: $PBX_IDENTITIANT", LOG_DEBUG);
-    dol_syslog("PBX_SOURCE: $PBX_SOURCE", LOG_DEBUG);
-    dol_syslog("PBX_TYPEPAIEMENT: $PBX_TYPEPAIEMENT", LOG_DEBUG);
 
     header("Content-type: text/html; charset=".$conf->file->character_set_client);
 
@@ -188,26 +227,11 @@ function print_paybox_redirect($PRICE,$CURRENCY,$EMAIL,$urlok,$urlko,$TAG)
 
     // For Paybox V2 (PBX_xxx)
     print '<!-- Param for Paybox v2 -->'."\n";
-    print '<input type="hidden" name="PBX_IDENTIFIANT" value="'.$PBX_IDENTIFIANT.'">'."\n";
-    print '<input type="hidden" name="PBX_MODE" value="'.$IBS_MODE.'">'."\n";
-    print '<input type="hidden" name="PBX_SITE" value="'.$IBS_SITE.'">'."\n";
-    print '<input type="hidden" name="PBX_RANG" value="'.$IBS_RANG.'">'."\n";
-    print '<input type="hidden" name="PBX_TOTAL" value="'.$IBS_TOTAL.'">'."\n";
-    print '<input type="hidden" name="PBX_DEVISE" value="'.$IBS_DEVISE.'">'."\n";
-    print '<input type="hidden" name="PBX_CMD" value="'.$IBS_CMD.'">'."\n";
-    print '<input type="hidden" name="PBX_PORTEUR" value="'.$IBS_PORTEUR.'">'."\n";
-    print '<input type="hidden" name="PBX_RETOUR" value="'.$IBS_RETOUR.'">'."\n";
-    print '<input type="hidden" name="PBX_EFFECTUE" value="'.$IBS_EFFECTUE.'">'."\n";
-    print '<input type="hidden" name="PBX_ANNULE" value="'.$IBS_ANNULE.'">'."\n";
-    print '<input type="hidden" name="PBX_REFUSE" value="'.$IBS_REFUSE.'">'."\n";
-    print '<input type="hidden" name="PBX_TXT" value="'.$IBS_TXT.'">'."\n";
-    print '<input type="hidden" name="PBX_BKGD" value="'.$IBS_BKGD.'">'."\n";
-    print '<input type="hidden" name="PBX_WAIT" value="'.$IBS_WAIT.'">'."\n";
-    print '<input type="hidden" name="PBX_LANG" value="'.$IBS_LANG.'">'."\n";
-    print '<input type="hidden" name="PBX_OUTPUT" value="'.$IBS_OUTPUT.'">'."\n";
-    print '<input type="hidden" name="PBX_SOURCE" value="'.$PBX_SOURCE.'">'."\n";
-    print '<input type="hidden" name="PBX_TYPEPAIEMENT" value="'.$PBX_TYPEPAIEMENT.'">'."\n";
-
+	foreach($PBX_ARRAY as $var => $val){
+		print '<input type="hidden" name="'.$var.'" value="'.$val.'">'."\n";
+	} 
+	//insert HMAC signature
+	if ($conf->global->PAYBOX_IBS_HMAC)print '<input type="hidden" name="PBX_HMAC" value="'.calc_hmac($PBX_ARRAY).'">'."\n";
     print '</form>'."\n";
 
     // Formulaire pour module Paybox v2 (PBX_xxx)
