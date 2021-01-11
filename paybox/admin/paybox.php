@@ -166,15 +166,15 @@ print '<tr '.$bc[$var].'><td>';
 print '<span class="fieldrequired">'.$langs->trans("PAYBOX_CGI_URL_V2").'</span></td><td>';
 print '<input size="64" type="text" name="PAYBOX_CGI_URL_V2" value="'.$conf->global->PAYBOX_CGI_URL_V2.'">';
 print '<br>'.$langs->trans("Example").': http://mysite/cgi-bin/modulev2_redhat72.cgi';
-print '<br><!>'.$langs->trans("Leave empty when you use HMAC")."<!>";
+print '<br><!>'.$langs->trans("LeaveEmptyWhenYouUseHMAC")."<!>";
 print '</td></tr>';
 
 $var=!$var;
 print '<tr '.$bc[$var].'><td>';
 print '<span class="fieldrequired">'.$langs->trans("PAYBOX_CGI_URL_HMAC").'</span></td><td>';
 print '<input size="64" type="text" name="PAYBOX_CGI_URL_HMAC" value="'.$conf->global->PAYBOX_CGI_URL_V2.'">';
-print '<br>'.$langs->trans("For Production").' : https//tpeweb.paybox.com/php/';
-print '<br>'.$langs->trans("For test").' : https//preprod-toeweb.paybox.com/php/';
+print '<br>'.$langs->trans("ForProduction").' : https//tpeweb.paybox.com/php/';
+print '<br>'.$langs->trans("ForTest").' : https//preprod-toeweb.paybox.com/php/';
 print '</td></tr>';
 
 $var=!$var;
