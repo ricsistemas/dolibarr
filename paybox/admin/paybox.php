@@ -76,6 +76,8 @@ $IBS_DEVISE="978";      # Euro
 if (empty($conf->global->PAYBOX_IBS_DEVISE)) $conf->global->PAYBOX_IBS_DEVISE=$IBS_DEVISE;
 $IBS_HMAC="0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF";    # Site test
 if (empty($conf->global->PAYBOX_IBS_HMAC)) $conf->global->PAYBOX_IBS_HMAC=$IBS_HMAC;
+$IBS_HASH="256";    # Site test
+if (empty($conf->global->PAYBOX_IBS_HASH)) $conf->global->PAYBOX_IBS_HASH=$IBS_HMAC;
 
 llxHeader();
 
@@ -124,8 +126,15 @@ print '</td></tr>';
 $var=!$var;
 print '<tr '.$bc[$var].'><td>';
 print '<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_HMAC").'</span></td><td>';
-print '<input size="32" type="text" name="PAYBOX_PBX_HMAC" value="'.$conf->global->PAYBOX_PBX_MAC.'">';
+print '<input size="32" type="text" name="PAYBOX_PBX_HMAC" value="'.$conf->global->PAYBOX_PBX_HMAC.'">';
 print '<br>'.$langs->trans("Example").': 0123456789....ABCDEF ('.$langs->trans("Test").')';
+print '</td></tr>';
+
+$var=!$var;
+print '<tr '.$bc[$var].'><td>';
+print '<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_HASH").'</span></td><td>';
+print '<input size="32" type="text" name="PAYBOX_PBX_HASH" value="'.$conf->global->PAYBOX_PBX_HASH.'">';
+print '<br>'.$langs->trans("Example").': 256 ('.$langs->trans("Test").')';
 print '</td></tr>';
 
 $var=true;
